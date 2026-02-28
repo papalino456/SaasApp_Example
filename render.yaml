@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: saasapp
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: APP_URL
+        sync: false

@@ -1,41 +1,121 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Main Page</title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet">
-    <link href="vendor/jquery/jquery.slim.min.js" rel="stylesheet">
-    <link href="vendor/bootstrap/css/all.css" rel="stylesheet">
-    <link rel='stylesheet' href='css/mainStyle.css' />
-  </head>
-  <body style="overflow: hidden">
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">SaasApp</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="logout">Log out</a>
-            </li>
-          </ul>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - SaasApp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/modern-style.css">
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg-pattern"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        SaasApp
+      </a>
+      <div class="nav-links">
+        <a href="/billing" class="nav-link">Billing</a>
+        <a href="/logout" class="btn btn-ghost">Sign out</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard -->
+  <main class="dashboard">
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h1>Welcome back</h1>
+        <p>Here's what's happening with your account</p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-card-value">Free</div>
+          <div class="stat-card-label">Current Plan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value" style="color: var(--success);">Active</div>
+          <div class="stat-card-label">Account Status</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value">0</div>
+          <div class="stat-card-label">Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-value">5GB</div>
+          <div class="stat-card-label">Storage Used</div>
         </div>
       </div>
-    </nav>
-    <section class="pricing py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card mb-5 mb-lg-0">
-              <div class="card-body">
-                <a href="/billing" class="btn btn-block btn-primary text-uppercase">billing</a>
-              </div>
-            </div>
+
+      <!-- Card Grid -->
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+              <line x1="1" y1="10" x2="23" y2="10"></line>
+            </svg>
           </div>
+          <h2>Billing & Subscription</h2>
+          <p>Manage your subscription plan, payment methods, and view billing history.</p>
+          <a href="/billing" class="card-action">
+            Manage billing
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" style="background: #ecfdf5; color: var(--success);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h2>Security</h2>
+          <p>Update your password, enable two-factor authentication, and manage sessions.</p>
+          <a href="#" class="card-action">
+            Security settings
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" style="background: #fffbeb; color: var(--warning);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h2>Support</h2>
+          <p>Get help from our team, browse documentation, or contact support.</p>
+          <a href="#" class="card-action">
+            Get help
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
         </div>
       </div>
-    </section>  
-  </body>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 SaasApp. All rights reserved.</p>
+  </footer>
+</body>
 </html>

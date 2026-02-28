@@ -1,3 +1,33 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error - SaasApp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/modern-style.css">
+</head>
+<body>
+  <!-- Background Effects -->
+  <div class="bg-mesh"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <main class="auth-page">
+    <div class="auth-container">
+      <div class="auth-card" style="text-align: center; padding: 4rem 3rem;">
+        <div style="font-size: 6rem; font-weight: 900; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem;">
+          <%= error.status || 500 %>
+        </div>
+        <h1 style="font-size: 1.75rem; margin-bottom: 1rem;"><%= message %></h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Something went wrong. Please try again later.</p>
+        <a href="/" class="btn btn-primary btn-glow">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

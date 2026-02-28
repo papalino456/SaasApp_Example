@@ -10,10 +10,23 @@ var expressSession = require("express-session");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
-const stripe = require('stripe')('sk_test_51H5G7vC42zE1cBpbsBAJ9ipcfIHBz8TG84xzitdJ79nWqSxb5pNAKo0TgQMHLsZcY6vSJ6OxuDTR8EwoZn80cgGZ00HiEQRtSC');
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
+const stripe = require('stripe')(stripeSecretKey);
 var User = mongoose.model("User");
 
-mongoose.connect("mongodb://localhost:27017/SaasAppDB", { useNewUrlParser: true , useUnifiedTopology: true })
+// Connect to MongoDB (local or memory server)
+async function connectDB() {
+  const { MongoMemoryServer } = require('mongodb-memory-server');
+  const mongod = await MongoMemoryServer.create();
+  const uri = mongod.getUri();
+  console.log('Using in-memory MongoDB at:', uri);
+  await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+}
+
+connectDB().catch(err => {
+  console.error('Failed to connect to MongoDB:', err);
+  process.exit(1);
+});
 
 var app = express();
 
@@ -89,8 +102,8 @@ app.get("/billing", async function(req, res, next) {
         quantity: 1,
       }],
       mode: 'subscription',
-      success_url: 'https://localhost:3000/main?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://localhost:3000/billing',
+      success_url: `${process.env.APP_URL || 'http://localhost:3000'}/main?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.APP_URL || 'http://localhost:3000'}/billing`,
     }, function(err, session) {
       if (err) return next(err);
       res.render("billing", {sessionId: session.id, subscriptionActive: req.user.subscriptionActive})
